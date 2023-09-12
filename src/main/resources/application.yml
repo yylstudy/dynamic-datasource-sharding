@@ -1,0 +1,44 @@
+spring:
+  datasource:
+    dynamic:
+      enabled: false
+      primary: master
+      strict: false
+      datasource:
+        master:
+          pool-name: act-pool-master
+          type: com.linkcircle.ss.LHikariDataSource
+          url: jdbc:mysql://172.16.252.130:3306/test?characterEncoding=UTF-8&useSSL=true&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true&allowMultiQueries=true
+          username: root
+          password: RHhiT97UsukJpKyuqpPG1JhrfVH0q/qeRL5uOjC0V3E54yPn+WmVxu90p7/6lzrU6rTuOpDeRdcZ8aYqEcqvYA==
+          driverClassName: com.mysql.cj.jdbc.Driver
+      hikari:
+        connection-timeout: 30000
+        maximum-pool-size: 30
+        minimum-idle: 10
+        idle-timeout: 30000
+        max-lifetime: 900000
+        connection-test-query: 'select 1'
+        validation-timeout: 1000
+  shardingsphere:
+    rules:
+      sharding:
+        tables:
+          trace_label:
+            actualDataNodes: sharding-datasource.trace_label*
+            tableStrategy:
+              complex:
+                shardingColumns: tenand_id,create_time
+                shardingAlgorithmName: trace_label-complex
+        shardingAlgorithms:
+          trace_label-complex:
+            type: CLASS_BASED
+            props:
+              strategy: COMPLEX
+              algorithmClassName: com.yyl.sharding.TraceLabelComplexKeysShardingAlgorithm
+mysql:
+  url:
+    format: jdbc:mysql://%s:%s/%s?characterEncoding=UTF-8&useSSL=true&serverTimezone=Asia/Shanghai
+mybatis-plus:
+  mapper-locations: mapper/*.xml
+
