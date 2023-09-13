@@ -14,12 +14,13 @@ spring:
           driverClassName: com.mysql.cj.jdbc.Driver
       hikari:
         connection-timeout: 30000
-        maximum-pool-size: 30
-        minimum-idle: 10
         idle-timeout: 30000
         max-lifetime: 900000
         connection-test-query: 'select 1'
         validation-timeout: 1000
+        max-pool-size: 30
+        min-idle: 1
+
   shardingsphere:
     rules:
       sharding:
