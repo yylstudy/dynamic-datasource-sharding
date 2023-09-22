@@ -23,9 +23,14 @@ public class ShardingSphereConfiguration {
         return new YamlShardingRuleConfiguration();
     }
     @Bean
+    public SpringBootPropertiesConfiguration springBootPropertiesConfiguration(){
+        return new SpringBootPropertiesConfiguration();
+    }
+
+    @Bean
     @Order(ShardingSphere_LINKCIRCLE_HIKARI_ORDER)
     public ShardingLHikariDataSourceCreator shardingLHikariDataSourceCreator(){
-        return new ShardingLHikariDataSourceCreator(yamlShardingRuleConfiguration());
+        return new ShardingLHikariDataSourceCreator(yamlShardingRuleConfiguration(),springBootPropertiesConfiguration());
     }
 
 }
