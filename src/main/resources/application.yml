@@ -8,10 +8,10 @@ spring:
         master:
           pool-name: act-pool-master
           type: com.linkcircle.ss.LHikariDataSource
-          url: jdbc:mysql://172.16.252.55:3300/act_pro?characterEncoding=UTF-8&useSSL=true&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true&allowMultiQueries=true
+          url: jdbc:mysql://172.16.250.224:3300/act_pro?characterEncoding=UTF-8&useSSL=true&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true&allowMultiQueries=true
           username: root
           #password: R4GPOT1iiI7Q4rjdL14MAuYkrdYbHld3lqoEA62V3/Yjg0Il9XIJGHwVQO6dUr4Bt2n4n2FX0iWf981sCiz9QA==
-          password: R4GPOT1iiI7Q4rjdL14MAuYkrdYbHld3lqoEA62V3/Yjg0Il9XIJGHwVQO6dUr4Bt2n4n2FX0iWf981sCiz9QA==
+          password: PlVATD7p+wPUpyuQUdHPM96hj6P6AM1r9HCZPbBEahwKJpqPcTNmWnoX25zDmJpRDrlyg2ZJQ+Iw39iJfVc7/g==
           driverClassName: com.mysql.cj.jdbc.Driver
       hikari:
         connection-timeout: 30000
@@ -38,7 +38,7 @@ spring:
               strategy: COMPLEX
               algorithmClassName: com.yyl.sharding.TraceLabelComplexKeysShardingAlgorithm
     props:
-      show-sql: true
+      sql-show: true
 
 
 mysql:
